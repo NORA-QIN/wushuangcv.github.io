@@ -2,174 +2,22 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
+  <title>简历列表</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>你的名字 · 作品集 Portfolio</title>
-  <meta name="description" content="你的名字 · 交互/产品/可视化作品集，含简历下载与联系方式。" />
-  <meta name="keywords" content="作品集, 交互设计, UI/UX, 产品设计, 数据可视化" />
-  <meta property="og:title" content="你的名字 · 作品集" />
-  <meta property="og:description" content="交互/产品/可视化项目与简历。" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://你的域名或github.io" />
-  <meta name="color-scheme" content="light dark" />
-  <link rel="icon" href="favicon.ico" />
   <style>
-    :root{
-      --bg:#ffffff; --fg:#0f172a; --muted:#475569; --brand:#2563eb; --card:#f8fafc; --ring:#c7d2fe;
-    }
-    @media (prefers-color-scheme: dark){
-      :root{ --bg:#0b1020; --fg:#e5e7eb; --muted:#94a3b8; --brand:#60a5fa; --card:#0f172a; --ring:#1d4ed8; }
-    }
-    *{ box-sizing:border-box }
-    html,body{ margin:0; padding:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; color:var(--fg); background:var(--bg); }
-    a{ color:var(--brand); text-decoration:none }
-    a:hover{ text-decoration:underline }
-    .container{ width:min(1100px, 92vw); margin-inline:auto; }
-    header{ position:sticky; top:0; backdrop-filter:saturate(180%) blur(8px); background-color:color-mix(in oklab, var(--bg) 85%, transparent); border-bottom:1px solid color-mix(in oklab, var(--fg) 12%, transparent); z-index:10; }
-    .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 4px; }
-    .nav a.logo{ font-weight:700; letter-spacing:.3px }
-    .nav .links{ display:flex; gap:18px; align-items:center }
-    .btn{ display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border:1px solid color-mix(in oklab, var(--fg) 12%, transparent); border-radius:999px; background:linear-gradient(180deg, color-mix(in oklab, var(--bg) 70%, white), color-mix(in oklab, var(--bg) 80%, #e2e8f0)); box-shadow: 0 1px 0 rgba(0,0,0,.04) inset; }
-    .btn:hover{ transform:translateY(-1px); box-shadow:0 8px 20px rgba(2,6,23,.1) }
-    .btn.primary{ background: linear-gradient(180deg, color-mix(in oklab, var(--brand) 30%, var(--bg)), var(--brand)); color:white; border-color: color-mix(in oklab, var(--brand) 30%, black); }
-
-    .hero{ padding:88px 0 44px; display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:center; }
-    @media (max-width:900px){ .hero{ grid-template-columns:1fr; padding-top:64px } }
-    .hero h1{ font-size: clamp(28px, 4vw, 48px); line-height:1.1; margin:0 0 14px }
-    .hero p{ color:var(--muted); font-size: clamp(15px, 1.8vw, 18px); margin:0 0 18px }
-    .card{ background:var(--card); border:1px solid color-mix(in oklab, var(--fg) 10%, transparent); border-radius:16px; padding:18px; }
-
-    .section{ padding:42px 0 }
-    .section h2{ font-size: clamp(22px, 3vw, 30px); margin:0 0 14px }
-    .grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:16px }
-    @media (max-width:900px){ .grid{ grid-template-columns:1fr 1fr } }
-    @media (max-width:640px){ .grid{ grid-template-columns:1fr } }
-    .proj{ display:flex; flex-direction:column; gap:10px }
-    .proj .thumb{ aspect-ratio: 16/9; border-radius:12px; background:linear-gradient(135deg, color-mix(in oklab, var(--brand) 18%, var(--card)), var(--card)); border:1px dashed color-mix(in oklab, var(--brand) 35%, var(--fg)); display:grid; place-items:center; color:var(--muted); font-size:14px }
-    .proj h3{ margin:0; font-size:18px }
-    .chips{ display:flex; flex-wrap:wrap; gap:8px }
-    .chip{ font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid color-mix(in oklab, var(--fg) 12%, transparent); background:var(--bg) }
-
-    .resume-box{ display:flex; flex-wrap:wrap; gap:12px; align-items:center }
-    .resume-note{ font-size:14px; color:var(--muted) }
-
-    footer{ padding:36px 0 60px; color:var(--muted); border-top:1px solid color-mix(in oklab, var(--fg) 12%, transparent) }
-    .kbd{ font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:12px; background:var(--card); border:1px solid color-mix(in oklab, var(--fg) 12%, transparent); border-bottom-width:2px; padding:3px 6px; border-radius:6px }
+    body { font-family: Arial, sans-serif; margin: 40px; background: #f9fafb; }
+    h1 { font-size: 24px; }
+    ul { list-style: none; padding: 0; }
+    li { margin: 12px 0; }
+    a { text-decoration: none; color: #2563eb; font-size: 18px; }
+    a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <a class="logo" href="#">你的名字</a>
-      <nav class="links">
-        <a href="#about">关于我</a>
-        <a href="#projects">项目</a>
-        <a href="#resume">简历</a>
-        <a href="#contact">联系</a>
-        <a class="btn" href="https://github.com/你的GitHub用户名" target="_blank" rel="noreferrer">GitHub</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container">
-    <section class="hero">
-      <div>
-        <h1>你好，我是 <span style="white-space:nowrap">你的名字</span> 👋</h1>
-        <p>交互/产品/数据可视化方向的设计师与创作者，擅长把复杂问题变成清晰的体验。这里收录了我近期的项目案例与研究笔记。</p>
-        <div class="resume-box" style="margin-top:18px">
-          <a class="btn primary" href="resume.pdf" download>📄 下载我的简历</a>
-          <a class="btn" href="#projects">查看项目</a>
-          <span class="resume-note">请将你的 PDF 命名为 <span class="kbd">resume.pdf</span> 放在本页同目录。</span>
-        </div>
-      </div>
-      <div class="card">
-        <strong style="display:block; margin-bottom:10px">个人概览</strong>
-        <ul style="margin:0; padding-left:18px; line-height:1.8">
-          <li>方向：UI/UX · 产品 · 可视化 · 交互装置</li>
-          <li>技能：Figma / Adobe / Blender / Unity / TouchDesigner / Python</li>
-          <li>关注：情感化设计 · 具身交互 · 数据物化 · AR/VR</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="about" class="section">
-      <h2>关于我</h2>
-      <div class="card">
-        <p style="margin:0">一段 3–5 行的自我介绍：你的研究兴趣、方法、成绩/展览、获奖、以及你正在寻找的岗位（如「交互设计/产品设计实习」）。</p>
-      </div>
-    </section>
-
-    <section id="projects" class="section">
-      <h2>代表项目</h2>
-      <div class="grid">
-        <article class="proj card">
-          <div class="thumb">放项目封面图（800×450）</div>
-          <h3>项目 A · 一句话亮点</h3>
-          <p class="muted">用 2–3 句介绍目标、角色与成果（如提升完成率 32%）。</p>
-          <div class="chips">
-            <span class="chip">Figma</span><span class="chip">可用性测试</span><span class="chip">设计系统</span>
-          </div>
-          <a href="#" class="btn" style="margin-top:auto">查看详情</a>
-        </article>
-        <article class="proj card">
-          <div class="thumb">项目封面</div>
-          <h3>项目 B · 一句话亮点</h3>
-          <p class="muted">问题—思路—结果的简要闭环。</p>
-          <div class="chips"><span class="chip">数据可视化</span><span class="chip">交互原型</span></div>
-          <a href="#" class="btn" style="margin-top:auto">查看详情</a>
-        </article>
-        <article class="proj card">
-          <div class="thumb">项目封面</div>
-          <h3>项目 C · 一句话亮点</h3>
-          <p class="muted">可替换为论文/装置/黑客松等。</p>
-          <div class="chips"><span class="chip">Unity</span><span class="chip">AR</span></div>
-          <a href="#" class="btn" style="margin-top:auto">查看详情</a>
-        </article>
-      </div>
-    </section>
-    <section id="files" class="section">
-      <h2>文件下载</h2>
-      <div class="card">
-        <ul style="margin:0; padding-left:18px; line-height:1.9">
-          <li><a href="成品简历/国央企/秦无双简历.docx" target="_blank">秦无双简历.docx</a></li>
-          <li><a href="成品简历/国央企/秦无双简历.pdf" target="_blank">秦无双简历.pdf</a></li>
-        </ul>
-      </div>
-    </section>
-    <section id="resume" class="section">
-      <h2>简历</h2>
-      <div class="card">
-        <p>将你的 PDF 文件命名为 <span class="kbd">resume.pdf</span> 并与本页同目录上传到仓库后，下面按钮即可下载。</p>
-        <p>
-          <a class="btn primary" href="resume.pdf" target="_blank" rel="noreferrer">在线查看 / 下载简历</a>
-          <a class="btn" href="resume.pdf" download>直接下载</a>
-        </p>
-        <p class="resume-note">也可把简历放到 <span class="kbd">/assets/resume.pdf</span> 并把上面的链接改成 <span class="kbd">assets/resume.pdf</span>。</p>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <h2>联系</h2>
-      <div class="card">
-        <ul style="margin:0; padding-left:18px; line-height:1.9">
-          <li>邮箱：<a href="mailto:you@example.com">you@example.com</a></li>
-          <li>LinkedIn：<a href="https://www.linkedin.com/in/你的ID" target="_blank" rel="noreferrer">/你的ID</a></li>
-          <li>Behance：<a href="https://www.behance.net/你的ID" target="_blank" rel="noreferrer">/你的ID</a></li>
-        </ul>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
-        <span>© <span id="year"></span> 你的名字. 保留所有权利。</span>
-        <span style="font-size:13px">本页托管于 GitHub Pages · <a href="https://github.com/你的GitHub用户名/你的仓库名" target="_blank" rel="noreferrer">仓库链接</a></span>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <h1>成品简历文件列表</h1>
+  <ul>
+    <li><a href="cv-docx.html">秦无双简历.docx</a></li>
+    <li><a href="cv-pdf.html">秦无双简历.pdf</a></li>
+  </ul>
 </body>
 </html>
