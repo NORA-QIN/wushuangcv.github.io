@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>瀑布流图片展示</title>
+<style>
+:root{
+--gap:12px;
+}
+body{font-family:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;margin:24px;background:#f7f7f7;color:#111}
+h1{font-size:18px;margin-bottom:12px}
+
+
+/* Masonry 瀑布流布局 */
+.masonry{column-gap:var(--gap);column-count:4}
+.masonry img{width:100%;height:auto;display:block;margin:0 0 var(--gap);border-radius:6px}
+.masonry-wrap{background:white;padding:12px;border-radius:8px;box-shadow:0 1px 6px rgba(0,0,0,0.06)}
+
+
+/* 响应式：在窄屏上减少列数 */
+@media (max-width:1000px){.masonry{column-count:3}}
+@media (max-width:700px){.masonry{column-count:2}}
+@media (max-width:420px){.masonry{column-count:1}}
+
+
+.controls{margin-top:10px}
+button{padding:6px 10px;border-radius:6px;border:1px solid #ddd;background:white;cursor:pointer}
+</style>
+</head>
+<body>
+<h1>瀑布流 Masonry 图片展示</h1>
+<div class="masonry-wrap">
+<div class="masonry" id="masonryGallery"></div>
+</div>
+<div class="controls"><button id="addMasonry">追加一张随机图</button></div>
+
+
+<script>
+// 测试图片（使用 picsum），替换为你自己的图片即可
+const imgs = Array.from({length:16}).map((_,i)=>`https://picsum.photos/seed/${i+1}/600/` + (200 + Math.round(Math.random()*600)));
+
+
+const mason = document.getElementById('masonryGallery');
+
+
+// 初始化瀑布流图片
+imgs.forEach(src=>{
+const img = document.createElement('img');
+img.loading = 'lazy';
+img.src = src;
+mason.appendChild(img);
+});
+
+
+// 追加图片按钮
+document.getElementById('addMasonry').addEventListener('click',()=>{
+const n = Math.floor(Math.random()*10000);
+const img = document.createElement('img');
+img.loading = 'lazy';
+img.src = `https://picsum.photos/seed/${n}/600/${200+Math.round(Math.random()*600)}`;
+mason.appendChild(img);
+});
+</script>
+</body>
+</html>

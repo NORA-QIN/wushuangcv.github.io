@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>瀑布流图片展示</title>
+  <style>
+    :root{
+      --gap:16px;
+      --img-width:80vw; /* 图片占页面宽度的 80% */
+    }
+    body{
+      font-family:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      margin:24px;
+      background:#f1ecf8;
+      color:#111;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+    h1{font-size:18px;margin-bottom:12px;width:var(--img-width)}
+
+    /* 单列布局：每张图片宽度为页面 80% */
+    .list-wrap{width:var(--img-width);background:white;padding:12px;border-radius:8px;box-shadow:0 1px 6px rgba(0,0,0,0.06)}
+    .list img{width:100%;height:auto;display:block;margin:0 0 var(--gap);border-radius:6px}
+
+    .controls{margin-top:10px;width:var(--img-width)}
+    button{padding:6px 10px;border-radius:6px;border:1px solid #ddd;background:white;cursor:pointer}
+  </style>
+</head>
+<body>
+
+  <div class="list-wrap">
+    <div class="list" id="imageList"></div>
+  </div>
+  <div class="controls"><button id="addImg">追加一张图片</button></div>
+
+  <script>
+    // 图片按顺序展示，可替换为你的图片数组
+    const imgs = [
+  "pic/page1.png",
+
+];
+
+
+    const list = document.getElementById('imageList');
+
+    // 初始化顺序列表
+    imgs.forEach(src=>{
+      const img = document.createElement('img');
+      img.loading = 'lazy';
+      img.src = src;
+      list.appendChild(img);
+    });
+
+    // 追加图片（继续排在末尾）
+    document.getElementById('addImg').addEventListener('click',()=>{
+      const n = Math.floor(Math.random()*10000);
+      const img = document.createElement('img');
+      img.loading = 'lazy';
+      img.src = `https://picsum.photos/seed/${n}/800/${400+Math.round(Math.random()*600)}`;
+      list.appendChild(img);
+    });
+  </script>
+</body>
+</html>
